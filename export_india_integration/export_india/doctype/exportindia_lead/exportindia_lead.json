@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-01-16 11:34:00.546690",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inq_id",
+  "exportindia_data",
+  "section_break_cnyd",
+  "status",
+  "lead",
+  "column_break_jdos",
+  "created_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_cnyd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "inq_id",
+   "fieldtype": "Data",
+   "label": "Inq Id"
+  },
+  {
+   "fieldname": "exportindia_data",
+   "fieldtype": "JSON",
+   "label": "ExportIndia Data"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nQueued\nCompleted\nCancelled\nFailed"
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "label": "Lead",
+   "options": "Lead"
+  },
+  {
+   "fieldname": "column_break_jdos",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "created_on",
+   "fieldtype": "Datetime",
+   "label": "Created on"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-16 11:37:50.376063",
+ "modified_by": "Administrator",
+ "module": "Export India",
+ "name": "ExportIndia Lead",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
