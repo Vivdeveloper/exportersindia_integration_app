@@ -84,7 +84,7 @@ def process_exportindia_leads():
                 frappe.db.set_value("ExportIndia Lead", exportindia_lead_name, "status", "No Data")
                 frappe.msgprint(f"No data found for ExportIndia Lead {exportindia_lead_name}")
                 continue
-
+            print("###########Before Return")
             exportindia_lead_data = json.loads(exportindia_lead_data)
             lead_name = exportindia_lead_data.get("name") 
             phone = exportindia_lead_data.get("mobile")
@@ -98,8 +98,8 @@ def process_exportindia_leads():
             # inquiry_type = exportindia_lead_data.get("inquiry_type")
 			
 
-            if frappe.db.exists("Lead", {"email_id": email, "phone": phone}):
-                  frappe.msgprint(f"Lead with phone {phone} already exists.")
+            if frappe.db.exists("Lead", {"custom_inq_id": inqid}):
+                  frappe.msgprint(f"Lead with phone {inqid} already exists.")
                   return
 
             lead = frappe.new_doc("Lead")
@@ -114,7 +114,7 @@ def process_exportindia_leads():
             lead.state = sender_state
             lead.custom_inq_id = inqid
             lead.insert(ignore_permissions=True)
-
+            print(lead)
             frappe.db.set_value("ExportIndia Lead", exportindia_lead_name, "output", lead.name)
             frappe.db.set_value("ExportIndia Lead", exportindia_lead_name, "status", "Completed")
             frappe.msgprint(f"Lead {lead.name} created successfully for ExportIndia Lead {exportindia_lead_name}.")
@@ -122,8 +122,10 @@ def process_exportindia_leads():
         except json.JSONDecodeError:
             frappe.db.set_value("ExportIndia Lead", exportindia_lead_name, "status", "Failed")
             frappe.msgprint(f"Invalid JSON format for ExportIndia Lead {exportindia_lead_name}")
+            print("lead#######################FailJSON")
 
         except Exception as e:
             frappe.db.set_value("ExportIndia Lead", exportindia_lead_name, "status", "Failed")
-            frappe.log_error(f"Error processing ExportIndia Lead {exportindia_lead_name}: {str(e)}", "ExportIndia Lead Processing Error")
+            print("Failed Exception@@@@@@@@@@#######################FailJSON")
+            # frappe.log_error(f"Error processing ExportIndia Lead {exportindia_lead_name}: {str(e)}", "ExportIndia Lead Processing Error")
 
