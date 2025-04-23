@@ -41,8 +41,8 @@ def fetch_exportindia_data(exportindia_lead_name):
 	sender_country = exportindia_lead_data.get("country") 
 	inqid= exportindia_lead_data.get("inq_id")
 
-	if frappe.db.exists("Lead", {"email_id": email, "phone": phone}):
-		frappe.msgprint(f"Lead with phone {phone} already exists.")
+	if frappe.db.exists("Lead", {"custom_inq_id": inqid}):
+		frappe.msgprint(f"Lead with ID {inqid} already exists.")
 		return
 	
 	lead = frappe.new_doc("Lead")
@@ -99,7 +99,7 @@ def process_exportindia_leads():
 			
 
             if frappe.db.exists("Lead", {"custom_inq_id": inqid}):
-                  frappe.msgprint(f"Lead with phone {inqid} already exists.")
+                  frappe.msgprint(f"Lead with ID {inqid} already exists.")
                   return
 
             lead = frappe.new_doc("Lead")
