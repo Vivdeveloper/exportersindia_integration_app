@@ -114,7 +114,7 @@ def process_exportindia_leads():
             lead.state = sender_state
             lead.custom_inq_id = inqid
             lead.insert(ignore_permissions=True)
-            print(lead)
+            # print(lead)
             frappe.db.set_value("ExportIndia Lead", exportindia_lead_name, "output", lead.name)
             frappe.db.set_value("ExportIndia Lead", exportindia_lead_name, "status", "Completed")
             frappe.msgprint(f"Lead {lead.name} created successfully for ExportIndia Lead {exportindia_lead_name}.")
@@ -127,5 +127,5 @@ def process_exportindia_leads():
         except Exception as e:
             frappe.db.set_value("ExportIndia Lead", exportindia_lead_name, "status", "Failed")
             print("Failed Exception@@@@@@@@@@#######################FailJSON")
-            # frappe.log_error(f"Error processing ExportIndia Lead {exportindia_lead_name}: {str(e)}", "ExportIndia Lead Processing Error")
+           
 

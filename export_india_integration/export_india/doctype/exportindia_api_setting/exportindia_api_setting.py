@@ -35,7 +35,7 @@ def fetch_exportindia_data():
 			if isinstance(data, list):
 				for record in data:
 					inq_id = record.get("inq_id")
-					if not frappe.db.exists("ExportIndia Lead", {"query_id": inq_id}):
+					if not frappe.db.exists("ExportIndia Lead", {"inq_id": inq_id}):
 						doc = frappe.new_doc("ExportIndia Lead")
 						doc.inq_id = inq_id
 						doc.exportindia_data = record
