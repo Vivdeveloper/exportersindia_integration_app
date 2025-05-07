@@ -244,7 +244,7 @@ app_license = "mit"
 
 scheduler_events = {
     "cron": {
-        "*/6 * * * *": [
+        "*/7 * * * *": [
             "export_india_integration.export_india.doctype.exportindia_api_setting.exportindia_api_setting.fetch_exportindia_data",
             "export_india_integration.export_india.doctype.exportindia_lead.exportindia_lead.process_exportindia_leads"
         ]
